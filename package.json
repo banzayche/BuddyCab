@@ -1,0 +1,21 @@
+{
+  "name": "angular_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "bower": "^1.7.9",
+    "express": "^4.13.4",
+    "fs": "0.0.2",
+    "gulp": "^3.9.1",
+    "mongojs": "^2.3.0",
+    "mongoose": "^4.4.13",
+    "traceur": "0.0.107"
+  }
+}
