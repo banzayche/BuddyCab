@@ -1,1 +1,1 @@
-angular.module('BuddyCab', ['ngRoute', 'ngResource']);
+angular.module('BuddyCab', ['ngResource', 'ui.router']);
