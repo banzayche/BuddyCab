@@ -17,7 +17,7 @@ angular.module('BuddyCab')
 			$http.put('/api/subscribers/'+subscribers.id, subscribers)
 				.then(function mySucces(response) {
 			        console.log(response);
-			        $state.go('home');
+			        $state.go('admin');
 			    });
 		};
 	});

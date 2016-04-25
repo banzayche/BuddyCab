@@ -7,7 +7,7 @@ angular.module('BuddyCab')
 		};
 
 		$scope.deleteItem = (item)=>{
-			console.log('Deleted');
+			console.log('Deleted', item.id);
 			$http.delete('/api/subscribers/remove/'+item.id)
 				.then(function mySucces(response) {
 			        console.log(response);

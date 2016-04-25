@@ -7,7 +7,7 @@ angular.module('BuddyCab')
 			$http.post('/api/subscribers/new', subscribers)
 				.then(function mySucces(response) {
 			        console.log(response);
-			        $state.go('home');
+			        $state.go('admin');
 			    });
 		};
 		// $http({

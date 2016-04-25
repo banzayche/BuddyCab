@@ -1,7 +1,12 @@
 angular.module('BuddyCab').config(function($stateProvider){
 	$stateProvider
-	    .state('home', {
-		    url: "/home",
+		.state('start', {
+		    url: "/",
+			templateUrl: '/public/templates/start.html',
+			controller: 'StartController'
+	    })
+	    .state('admin', {
+		    url: "/admin",
 			templateUrl: '/public/templates/main.html',
 			controller: 'MainController'
 	    })
