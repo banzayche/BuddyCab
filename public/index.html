@@ -2,10 +2,13 @@
 <html ng-app="BuddyCab">
 <head>
 	<title>BuddyCAb</title>
-	<link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/public/css/styles.css">
 </head>
 <body>
-	<ui-view></ui-view>
+	<div class="container-fluid main-container">
+		<ui-view></ui-view>
+	</div>
 </body>
 	<!-- Traceur -->
 	<script type="text/javascript" src="/node_modules/traceur/bin/traceur.js"></script>
@@ -24,6 +27,7 @@
 	<script type="text/javascript" src="/public/main/routes.js"></script>
 	<!-- ctrl -->
 	<script type="text/javascript" src="/public/controllers/controller.js"></script>
+	<script type="text/javascript" src="/public/controllers/user-controller.js"></script>
 	<!-- factory -->
 	<script type="text/javascript" src="/public/services/factory.js"></script>
 </html>

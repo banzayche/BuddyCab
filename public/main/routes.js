@@ -1,9 +1,18 @@
 angular.module('BuddyCab').config(function($stateProvider){
 	$stateProvider
-	    .state('/', {
-		    url: "/",
-		    templateUrl: "partials/state1.html",
-			templateUrl: 'public/templates/main.html',
+	    .state('home', {
+		    url: "/home",
+			templateUrl: '/public/templates/main.html',
 			controller: 'MainController'
+	    })
+	    .state('item', {
+		    url: "/:item",
+			templateUrl: '/public/templates/main.html',
+			controller: 'UserController'
+	    })
+	    .state('redirect', {
+		    url: "/",
+		    templateUrl: '/public/templates/main.html',
+		    redirectTo: "home"
 	    });
 });

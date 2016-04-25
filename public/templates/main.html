@@ -1,5 +1,5 @@
 <div>
-	<h1>BuddyCab title</h1>
+	<h1>BuddyCab subscribers</h1>
 
  	<table class="table">
  		<thead> 
@@ -12,7 +12,7 @@
  			</tr>
  		</thead>
  		<tbody> 
- 			<tr ng-repeat="subscriber in subscribers" class="info">
+ 			<tr ng-repeat="subscriber in subscribers" ng-click="chooseItem(subscriber)">
  				<th scope="row">#</th>
  				<td>{{test}} {{subscriber.name}}</td>
 	 			<td>{{subscriber.sirname}}</td>

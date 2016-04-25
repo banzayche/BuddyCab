@@ -1,0 +1,33 @@
+body{
+	background-image: url('https://onlinesocialmeasures.files.wordpress.com/2014/11/1-3157003-technology-network-loop-background.jpg');
+	background-position: cover;
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+.main-container{
+	margin: 100px 20px;
+	padding: 15px;
+	background-color: rgba(245,245,245,.9);
+	border-radius: 5px;
+	box-shadow: 2px 2px 15px black;
+}
+
+table thead tr{
+    background: #30ACFF;    
+}
+tbody tr:hover{
+	color: white;
+	background: rgba(4,4,4,.9) !important;
+}
+
+table tbody tr{
+	cursor: pointer;
+}
+table tbody tr:nth-child(odd) {
+    background: white;
+}
+
+table tbody tr:nth-child(even) {
+	color: white;
+    background: rgba(4,4,4,.3);
+}

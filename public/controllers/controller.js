@@ -1,7 +1,9 @@
 angular.module('BuddyCab')
-	.controller('MainController', function(Subscriber, $scope){
+	.controller('MainController', function(Subscriber, $scope, $state, $stateParams){
 		$scope.subscribers = Subscriber.query();
-		console.log($scope.subscribers);
 
+		$scope.chooseItem = (item)=>{
+			$state.go('item', {item: item.name});
+		};
 		// $scope.search = {};
 	});
