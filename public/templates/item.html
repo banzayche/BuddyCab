@@ -34,15 +34,15 @@
 
 	 	<div class="form-group col-xs-6">
 	 		<label for="phone">Phone: {{subscribers.phone}}</label><br/>
-	 		<input class="form-control" type="text" name="phone" ng-model="subscribers.phone"></input>
+	 		<input class="form-control" type="number" name="phone" ng-model="subscribers.phone"></input>
 	 	</div>
 	 	<div class="form-group col-xs-6">
 	 		<label for="avatar">Avatar: {{subscribers.avatar}}</label><br/>
 	 		<input class="form-control" type="text" name="avatar" ng-model="subscribers.avatar"></input>
 	 	</div>
 	 	<div class="form-group col-xs-12">
-	 		<button ng-click='saveItem(subscribers)' class="btn btn-info pull-rigth">Save</button>
-	 		<a ui-sref="home" ng-click='back' class="btn btn-default pull-rigth">Back</a>
+	 		<button ng-click='saveNew(subscribers)' class="btn btn-info pull-rigth">Save</button>
+	 		<a ui-sref="home" class="btn btn-default pull-rigth">Back</a>
 	 	</div>
  	</div>
  </div>

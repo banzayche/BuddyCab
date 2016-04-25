@@ -1,6 +1,6 @@
 <div>
 	<h1>BuddyCab subscribers</h1>
-
+	<a ui-sref="new" class="btn btn-primary">Create NEW</a><br/><br/>
  	<table class="table">
  		<thead> 
  			<tr class="h4">
@@ -8,17 +8,18 @@
  				<td>Name</td>
  				<td>Sirname</td>
  				<td>Phone</td>
- 				<td colspan='2'>Avatar</td>
+ 				<td colspan='3'>Avatar</td>
  			</tr>
  		</thead>
  		<tbody> 
- 			<tr ng-repeat="subscriber in subscribers" ng-click="chooseItem(subscriber)">
- 				<th scope="row">#</th>
- 				<td>{{test}} {{subscriber.name}}</td>
+ 			<tr ng-repeat="subscriber in subscribers">
+ 				<th scope="row">#{{subscriber.id + 1}}</th>
+ 				<td>{{subscriber.name}}</td>
 	 			<td>{{subscriber.sirname}}</td>
 	 			<td>{{subscriber.phone}}</td>
 	 			<td>{{subscriber.avatar}}</td>
 	 			<td><button class="btn btn-danger" ng-click="deleteItem(subscriber)">x</button></td>
+	 			<td><button class="btn btn-primary" ng-click="chooseItem(subscriber)">Edit</button></td>
  			</tr>
  		</tbody> 
  	</table>

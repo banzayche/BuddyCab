@@ -4,7 +4,7 @@ var port = process.env.PORT || 5000;
 app.listen(port, function() {
    console.log("Listening on " + port);
 });
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 app.use(bodyParser());
 
 
@@ -18,122 +18,104 @@ db.once('open', function() {
   console.log("we're connected!");
 });
 
+// schema of model
 var subscriberSchema = mongoose.Schema({
     name: String,
     sirname: String,
     phone: Number,
-    avatar: String
+    avatar: String,
+    id: Number
 });
 
 var Subscriber = mongoose.model('Subscriber', subscriberSchema);
-
-Subscriber.find(function (err, subscribers) {
-  if (err) return console.error(err);
-  console.log(subscribers);
-});
-
-
-// // var mongojs = require('mongojs');
-// // var db = mongojs('BuddyCab', ['BuddyCab']);
-
-app.get("/api/subscribers", function(req, res) {
-    console.log('old');
-   Subscriber.find(function(err, subscribers){
-   	console.log(subscribers)
-   	res.json(subscribers);
-   });
-});
-app.get("/api/subscribers/:item", function(req, res) {
-    console.log('new');
-    console.log(req.params.item);
-    Subscriber.find( { name: req.params.item }, function(err, subscribers){
-        console.log(subscribers)
-        res.json(subscribers);
-    });
-});
-
-
-
-// var notes = require('./notes');
-// var categories = notes.data.categories;
-// notes = notes.data.notes;
-// var fs = require("fs");
-// var notes = fs.readFileSync("notes.json");
-// var jsonNotes = JSON.parse(notes);
-
+var subscribersId = 0;
+// Subscriber.find(function (err, subscribers) {
+//   if (err) return console.error(err);  
+//   console.log(subscribers);
+// });
 
 /* serves main page */
 app.get("/", function(req, res) {
    res.sendfile('public/index.html')
 });
+// GET ALL SUBSCRIBERS
+app.get("/api/subscribers", function(req, res) {
+   Subscriber.find(function(err, subscribers){
+    console.log(subscribers)
+    res.json(subscribers);
+   });
+});
+// GET ITEM SUBSCRIBER
+app.get("/api/subscribers/:item", function(req, res) {
+    var ID = +(req.params.item);
+    console.log(req.params.item);
+    Subscriber.find( { id: ID }, function(err, subscribers){
+        console.log(subscribers)
+        res.json(subscribers);
+    });
+});
+// CREATE NEW
+app.post("/api/subscribers/new", function(req, res) {
+    console.log('new');
+    console.log(req.body);
+    Subscriber.find(function (err, subscribers) {
+      if (err) return console.error(err);
+      // get new ID
+      subscribersId = +subscribers[subscribers.length-1].id+1;
+      // create new subscriber
+      var newUser = new Subscriber({
+            name: req.body.name,
+            sirname: req.body.sirname,
+            phone: +req.body.phone,
+            avatar: req.body.avatar,
+            id: +subscribersId
+        });
 
-// app.get("/notes/:id", function(req, res) {
-// 	var note = notes.filter(function(note) { return note.id == req.params.id; })[0];
-	
-// 	if(!note) {
-//         res.statusCode = 404;
-//         return res.json({ msg: "note does not exist" });
-//     }
+        newUser.save(function(err) {
+            if (err) throw err;
 
-// 	res.json(note);
-// });
+            console.log('User saved successfully!');
+            res.json(newUser);
+        });
+    }); 
+});
+// CHANGE ITEM SUBSCRIBER
+app.put("/api/subscribers/:item", function(req, res){
+    var ID = +(req.params.item);
+    console.log(typeof ID);
+    Subscriber.findOne( { id: ID }, function(err, subscriber){
+        if (err) throw err;
 
-// app.post('/notes', function(req, res) {
-//     var newNote = {
-//         name : req.body.name,
-//         body : req.body.body,
-//         id: notes.length,
-//         categoryId: req.body.categoryId
-//     };
+        console.log(subscriber)
+        subscriber.name = req.body.name;
+        subscriber.sirname = req.body.sirname;
+        subscriber.phone = +req.body.phone;
+        subscriber.avatar = req.body.avatar;
 
-//     notes.push(newNote);
-    
-//     setTimeout(function(){
-//     	res.json(newNote);
-//     }, 1000);
-// });
+        // save the user
+        subscriber.save(function(err) {
+            if (err) throw err;
 
-// app.put("/notes/:id", function(req, res) {
-// 	var note = notes.filter(function(note) { return note.id == req.params.id; })[0];
-// 	if(!note) {
-//         res.statusCode = 404;
-//         return res.json({ msg: "note does not exist" });
-//     }
+            console.log('User successfully updated!');
+            res.json(subscriber);
+        });
+    });
+});
+// DELETE ITEM SUBSCRIBER
+app.delete("/api/subscribers/remove/:item", function(req, res) {
+    var ID = +(req.params.item);
+    console.log(typeof ID);
+    Subscriber.findOne( { id: ID }, function(err, subscriber){
+        console.log(subscriber)
+        subscriber.remove(function(err) {
+            if (err) throw err;
 
-//     note.name = req.body.name;
-//     note.body = req.body.body;
-//     note.categoryId = req.body.categoryId;
+            console.log('User successfully deleted!');
+            res.send('200');
+        });
+    });
+});
 
-//     setTimeout(function(){
-//     	res.json(note);
-//     }, 1000);
-// });
-
-// app.get("/notes", function(req, res){ 
-//     // console.log('static file request : ' + req.params);
-//     res.json(notes);
-// });
-
-// app.get("/categories", function(req, res){ 
-//     // console.log('static file request : ' + req.params);
-//     res.json(categories);
-// });
-
-// app.delete('/notes/:id', function(req, res) {
-// 	var note = notes.filter(function(book) { return book.id == req.params.id; })[0];
-// 	if(!note) {
-//         res.statusCode = 404;
-//         return res.json({ msg: "note does not exist" });
-//     }
-
-//     notes.splice(notes.indexOf(note), 1);
-
-//     res.statusCode = 204;
-    
-//     setTimeout(function(){
-//     	res.send({});
-//     }, 1000);
-// });
 /* serves all the static files */
 app.get(/^(.+)$/, function(req, res){ 
     // console.log('static file request : ' + req.params);
