@@ -1,0 +1,48 @@
+<div>
+	<h1>BuddyCab subscribers</h1>
+<!-- 
+ 	<table class="table">
+ 		<thead> 
+ 			<tr class="h4">
+ 				<td>#</td>
+ 				<td>Name</td>
+ 				<td>Sirname</td>
+ 				<td>Phone</td>
+ 				<td colspan='2'>Avatar</td>
+ 			</tr>
+ 		</thead>
+ 		<tbody> 
+ 			<tr ng-repeat="subscriber in subscribers" ng-click="chooseItem(subscriber)">
+ 				<th scope="row">#</th>
+ 				<td>{{test}} {{subscriber.name}}</td>
+	 			<td>{{subscriber.sirname}}</td>
+	 			<td>{{subscriber.phone}}</td>
+	 			<td>{{subscriber.avatar}}</td>
+	 			<td><button class="btn btn-danger" ng-click="deleteItem(subscriber)">x</button></td>
+ 			</tr>
+ 		</tbody> 
+ 	</table> -->
+ 	<div class="container-fluid">
+ 		<div class="form-group col-xs-6">
+	 		<label for="name">Name: {{subscribers.name}}</label><br/>
+	 		<input class="form-control" type="text" name="name" ng-model="subscribers.name"></input>
+	 	</div>
+	 	<div class="form-group col-xs-6">
+	 		<label for="sirname">Sirname: {{subscribers.sirname}}</label><br/>
+	 		<input class="form-control" type="text" name="sirname" ng-model="subscribers.sirname"></input>
+	 	</div>
+
+	 	<div class="form-group col-xs-6">
+	 		<label for="phone">Phone: {{subscribers.phone}}</label><br/>
+	 		<input class="form-control" type="text" name="phone" ng-model="subscribers.phone"></input>
+	 	</div>
+	 	<div class="form-group col-xs-6">
+	 		<label for="avatar">Avatar: {{subscribers.avatar}}</label><br/>
+	 		<input class="form-control" type="text" name="avatar" ng-model="subscribers.avatar"></input>
+	 	</div>
+	 	<div class="form-group col-xs-12">
+	 		<button ng-click='saveItem(subscribers)' class="btn btn-info pull-rigth">Save</button>
+	 		<a ui-sref="home" ng-click='back' class="btn btn-default pull-rigth">Back</a>
+	 	</div>
+ 	</div>
+ </div>

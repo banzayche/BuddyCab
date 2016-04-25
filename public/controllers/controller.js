@@ -5,5 +5,9 @@ angular.module('BuddyCab')
 		$scope.chooseItem = (item)=>{
 			$state.go('item', {item: item.name});
 		};
+
+		$scope.deleteItem = (item)=>{
+			console.log('Deleted')
+		};
 		// $scope.search = {};
 	});

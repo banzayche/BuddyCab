@@ -7,12 +7,7 @@ angular.module('BuddyCab').config(function($stateProvider){
 	    })
 	    .state('item', {
 		    url: "/:item",
-			templateUrl: '/public/templates/main.html',
+			templateUrl: '/public/templates/item.html',
 			controller: 'UserController'
-	    })
-	    .state('redirect', {
-		    url: "/",
-		    templateUrl: '/public/templates/main.html',
-		    redirectTo: "home"
 	    });
 });
